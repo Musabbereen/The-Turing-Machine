@@ -10,7 +10,7 @@ public class Pattern_Matcher {
         String plus= eqn+"musab";
         Matcher matcher = pattern.matcher(eqn);
         if(matcher.matches()) {
-            String[] data = eqn.split("[+ \\-]");
+            String[] data = eqn.split("[\\+ \\-]");
             int i =0;
             while(i<data.length) {
                 System.out.println(data[i]);
