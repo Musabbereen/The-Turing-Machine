@@ -15,7 +15,7 @@ public class Pattern_Matcher {
         Scanner sc= new Scanner(System.in);
         n = sc.nextInt();
         String req_pattern = create_pattern(n);
-        String eqn = "7x+6y-5z+8t";
+        String eqn = "7x+6y-5z+8t-9t";
         System.out.println(req_pattern);
         System.out.println("Lets see if we can match the pattern using our logic");
         eqn_matcher(eqn,req_pattern);
