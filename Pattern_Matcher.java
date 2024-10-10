@@ -7,18 +7,28 @@ import java.util.regex.Pattern;
 
 
 public class Pattern_Matcher {
-
+    public static int n;
+    static int[][] arr;
     public static void main(String[] args) {
-        int n;
+
 
         System.out.println("How many unknowns do you want to find out??");
         Scanner sc= new Scanner(System.in);
         n = sc.nextInt();
+        arr = new int[n][n];
         String req_pattern = create_pattern(n);
-        String eqn = "7x+6y-5z+8t-9t";
-        System.out.println(req_pattern);
+        Scanner st = new Scanner(System.in);
+        int i=0;
         System.out.println("Lets see if we can match the pattern using our logic");
-        eqn_matcher(eqn,req_pattern);
+        while(i<n) {
+            System.out.println();
+            System.out.println("Enter equation number "+i);
+            String eqn = st.nextLine();
+
+            eqn_matcher(eqn, req_pattern,i);
+            i++;
+        }
+        createMatrix();
     }
     public static String create_pattern(int n){
         String linear_pattern_2 = "[+ - *]{0}\\d[a-z]";
@@ -37,21 +47,33 @@ public class Pattern_Matcher {
     }
 
 
-    public static void eqn_matcher(String eqn, String linear_pattern_2){
+    public static void eqn_matcher(String eqn, String linear_pattern_2,int row){
         Pattern pattern = Pattern.compile(linear_pattern_2);
 
         Matcher matcher = pattern.matcher(eqn);
         if(matcher.matches()) {
             String[] data = eqn.split("[\\+ \\-]");
-            int i =0;
+            int i =0,j=0;
             while(i<data.length) {
-                System.out.println(data[i]);
+               String val[] = data[i].split("");
+               arr[row][j] = Integer.parseInt(val[0]);
+                j++;
                 i++;
             }
         }
         else{
             System.out.println("No match");
         }
+
+
+    }
+    public static void createMatrix(){
+            for(int i=0;i<n;i++){
+                for(int j=0;j<n;j++){
+                    System.out.println(arr[i][j]);
+                }
+            }
+
     }
 }
 
